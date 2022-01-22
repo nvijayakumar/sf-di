@@ -4,7 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.sfdi.controllers.ConstructorInjectedController;
+import org.springframework.sfdi.controllers.I18nController;
 import org.springframework.sfdi.controllers.MyController;
+import org.springframework.sfdi.controllers.PetController;
 import org.springframework.sfdi.controllers.PropertyInjectedController;
 import org.springframework.sfdi.controllers.SetterInjectedController;
 
@@ -13,6 +15,12 @@ public class SfDiApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SfDiApplication.class, args);
+		
+		PetController petController = ctx.getBean("petController", PetController.class);
+		System.out.println(petController.whichPetIsTheBest());
+		
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
 		
 		//name based. Naming convention is camel case with first letter as small case.
 		MyController myController = (MyController) ctx.getBean("myController");
