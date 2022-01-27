@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.springframework.sfdi.services;
+package org.springframework.pets;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
  * @Since  20-Jan-2022
  *
  */
-@Profile("cat")
-@Service("cat")
-public class CatPetService implements PetService {
+@Profile({"dog", "default"})
+@Service
+public class DogPetService implements PetService {
 
 	@Override
 	public String getPetType() {
-		return "Cats Are the Best!";
+		return "Dogs Are the Best!";
 	}
 
 }

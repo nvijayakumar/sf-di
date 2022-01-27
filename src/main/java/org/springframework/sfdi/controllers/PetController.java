@@ -3,7 +3,7 @@
  */
 package org.springframework.sfdi.controllers;
 
-import org.springframework.sfdi.services.PetService;
+import org.springframework.pets.PetService;
 import org.springframework.stereotype.Controller;
 
 /**
