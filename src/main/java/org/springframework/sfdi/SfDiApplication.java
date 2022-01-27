@@ -3,7 +3,6 @@ package org.springframework.sfdi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.sfdi.controllers.ConstructorInjectedController;
 import org.springframework.sfdi.controllers.I18nController;
 import org.springframework.sfdi.controllers.MyController;
@@ -11,7 +10,7 @@ import org.springframework.sfdi.controllers.PetController;
 import org.springframework.sfdi.controllers.PropertyInjectedController;
 import org.springframework.sfdi.controllers.SetterInjectedController;
 
-@ComponentScan(basePackages = {"org.springframework.pets", "org.springframework.sfdi"})
+//@ComponentScan(basePackages = {"org.springframework.pets", "org.springframework.sfdi"}) // removed due to java based DI added
 @SpringBootApplication
 public class SfDiApplication {
 
