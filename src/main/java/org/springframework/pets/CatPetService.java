@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  *
  */
 @Profile("cat")
-@Service("cat")
+@Service
 public class CatPetService implements PetService {
 
 	@Override
