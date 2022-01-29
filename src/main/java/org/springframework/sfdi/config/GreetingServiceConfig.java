@@ -3,12 +3,15 @@
  */
 package org.springframework.sfdi.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.pets.PetService;
 import org.springframework.pets.PetServiceFactory;
+import org.springframework.sfdi.datasource.FakeDataSource;
 import org.springframework.sfdi.repositories.EnglishGreetingRepository;
 import org.springframework.sfdi.repositories.EnglishGreetingRepositoryImpl;
 import org.springframework.sfdi.services.GreetingServiceImpl;
@@ -22,9 +25,21 @@ import org.springframework.sfdi.services.SetterInjectedGreetingService;
  * @Since  27-Jan-2022
  *
  */
+@PropertySource("classpath:datasource.properties")
 @ImportResource("classpath:sfdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
+	
+	@Bean
+	FakeDataSource fakeDataSource(@Value("${guru.username}") String userName, 
+			@Value("${guru.password}") String password, 
+			@Value("${guru.jdbcurl}") String jdbcurl) {
+		FakeDataSource fakeDataSource = new FakeDataSource();
+		fakeDataSource.setUsername(userName);
+		fakeDataSource.setPassword(password);
+		fakeDataSource.setJdbcurl(jdbcurl);
+		return fakeDataSource;
+	}
 	
 	@Profile("ES")
 	@Bean("i18nService")

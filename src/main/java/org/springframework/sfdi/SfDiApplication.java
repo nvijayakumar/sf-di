@@ -9,6 +9,7 @@ import org.springframework.sfdi.controllers.MyController;
 import org.springframework.sfdi.controllers.PetController;
 import org.springframework.sfdi.controllers.PropertyInjectedController;
 import org.springframework.sfdi.controllers.SetterInjectedController;
+import org.springframework.sfdi.datasource.FakeDataSource;
 import org.springframework.sfdi.services.PrototypeBean;
 import org.springframework.sfdi.services.SingletonBean;
 
@@ -57,6 +58,9 @@ public class SfDiApplication {
 		prototypeBean1.getMyScope();
 		PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
 		prototypeBean2.getMyScope();
+		
+		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
+		System.out.println(fakeDataSource);
 		
 	}
 
