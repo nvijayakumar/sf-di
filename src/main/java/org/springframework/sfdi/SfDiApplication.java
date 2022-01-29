@@ -9,6 +9,8 @@ import org.springframework.sfdi.controllers.MyController;
 import org.springframework.sfdi.controllers.PetController;
 import org.springframework.sfdi.controllers.PropertyInjectedController;
 import org.springframework.sfdi.controllers.SetterInjectedController;
+import org.springframework.sfdi.services.PrototypeBean;
+import org.springframework.sfdi.services.SingletonBean;
 
 //@ComponentScan(basePackages = {"org.springframework.pets", "org.springframework.sfdi"}) // removed due to java based DI added
 @SpringBootApplication
@@ -44,6 +46,17 @@ public class SfDiApplication {
 		System.out.println("---------------Constructor");
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
 		System.out.println(constructorInjectedController.getGreeting());
+		
+		System.out.println("----------Bean Scope----------");
+		SingletonBean singletonBean1 = ctx.getBean(SingletonBean.class);
+		singletonBean1.getMyScope();
+		SingletonBean singletonBean2 = ctx.getBean(SingletonBean.class);
+		singletonBean2.getMyScope();
+		
+		PrototypeBean prototypeBean1 = ctx.getBean(PrototypeBean.class);
+		prototypeBean1.getMyScope();
+		PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
+		prototypeBean2.getMyScope();
 		
 	}
 
