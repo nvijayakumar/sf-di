@@ -25,7 +25,7 @@ import org.springframework.sfdi.services.SetterInjectedGreetingService;
  * @Since  27-Jan-2022
  *
  */
-@PropertySource("classpath:datasource.properties")
+//@PropertySource("classpath:datasource.properties") // This annotation will helps in loading new properties file.
 @ImportResource("classpath:sfdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
