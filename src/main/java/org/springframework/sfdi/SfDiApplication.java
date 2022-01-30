@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.sfdi.config.SfConfiguration;
+import org.springframework.sfdi.config.SfConstructorConfiguration;
 import org.springframework.sfdi.controllers.ConstructorInjectedController;
 import org.springframework.sfdi.controllers.I18nController;
 import org.springframework.sfdi.controllers.MyController;
@@ -67,6 +68,10 @@ public class SfDiApplication {
 		System.out.println("------------Config Property Bean");
 		SfConfiguration sfConfiguration = ctx.getBean(SfConfiguration.class);
 		System.out.println(sfConfiguration);
+		
+		System.out.println("------------Constructor Property binding");
+		SfConstructorConfiguration sfConstructorConfiguration = ctx.getBean(SfConstructorConfiguration.class);
+		System.out.println(sfConstructorConfiguration);
 	}
 
 }

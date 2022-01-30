@@ -3,12 +3,11 @@
  */
 package org.springframework.sfdi.config;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Profile;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.pets.PetService;
 import org.springframework.pets.PetServiceFactory;
 import org.springframework.sfdi.datasource.FakeDataSource;
@@ -26,16 +25,17 @@ import org.springframework.sfdi.services.SetterInjectedGreetingService;
  *
  */
 //@PropertySource("classpath:datasource.properties") // This annotation will helps in loading new properties file.
+@EnableConfigurationProperties(SfConstructorConfiguration.class)
 @ImportResource("classpath:sfdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
 	
 	@Bean
-	FakeDataSource fakeDataSource(SfConfiguration sfConfiguration) {
+	FakeDataSource fakeDataSource(SfConstructorConfiguration sfConstructorConfiguration) {
 		FakeDataSource fakeDataSource = new FakeDataSource();
-		fakeDataSource.setUsername(sfConfiguration.getUsername());
-		fakeDataSource.setPassword(sfConfiguration.getPassword());
-		fakeDataSource.setJdbcurl(sfConfiguration.getJdbcurl());
+		fakeDataSource.setUsername(sfConstructorConfiguration.getUsername());
+		fakeDataSource.setPassword(sfConstructorConfiguration.getPassword());
+		fakeDataSource.setJdbcurl(sfConstructorConfiguration.getJdbcurl());
 		return fakeDataSource;
 	}
 	
