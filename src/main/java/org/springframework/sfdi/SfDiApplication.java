@@ -3,6 +3,7 @@ package org.springframework.sfdi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.sfdi.config.SfConfiguration;
 import org.springframework.sfdi.controllers.ConstructorInjectedController;
 import org.springframework.sfdi.controllers.I18nController;
 import org.springframework.sfdi.controllers.MyController;
@@ -59,9 +60,13 @@ public class SfDiApplication {
 		PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
 		prototypeBean2.getMyScope();
 		
+		System.out.println("------------Fake Data Source");
 		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
 		System.out.println(fakeDataSource);
 		
+		System.out.println("------------Config Property Bean");
+		SfConfiguration sfConfiguration = ctx.getBean(SfConfiguration.class);
+		System.out.println(sfConfiguration);
 	}
 
 }

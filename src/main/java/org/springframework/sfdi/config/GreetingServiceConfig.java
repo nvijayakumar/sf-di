@@ -31,13 +31,11 @@ import org.springframework.sfdi.services.SetterInjectedGreetingService;
 public class GreetingServiceConfig {
 	
 	@Bean
-	FakeDataSource fakeDataSource(@Value("${guru.username}") String userName, 
-			@Value("${guru.password}") String password, 
-			@Value("${guru.jdbcurl}") String jdbcurl) {
+	FakeDataSource fakeDataSource(SfConfiguration sfConfiguration) {
 		FakeDataSource fakeDataSource = new FakeDataSource();
-		fakeDataSource.setUsername(userName);
-		fakeDataSource.setPassword(password);
-		fakeDataSource.setJdbcurl(jdbcurl);
+		fakeDataSource.setUsername(sfConfiguration.getUsername());
+		fakeDataSource.setPassword(sfConfiguration.getPassword());
+		fakeDataSource.setJdbcurl(sfConfiguration.getJdbcurl());
 		return fakeDataSource;
 	}
 	
